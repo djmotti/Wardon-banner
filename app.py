@@ -46,15 +46,17 @@ def banner():
     message = messages[(today - 1) % len(messages)]
 
     # יצירת תמונה
-    img = Image.new('RGB', (700, 50), color=(255, 255, 255))
+    img = Image.new('RGB', (700, 80), color=(234, 244, 255))  # רקע כחול בהיר
     draw = ImageDraw.Draw(img)
 
     try:
-        font = ImageFont.truetype("arial.ttf", 20)
+        font = ImageFont.truetype("David.ttf", 28)  # גופן דוד (אם נתמך)
     except:
         font = ImageFont.load_default()
 
-    draw.text((10, 10), message, fill=(0, 0, 0), font=font)
+    # ציור מלבן למסגור
+    draw.rectangle([(0, 0), (699, 79)], outline=(180, 180, 180), width=1)  # מסגרת אפורה
+    draw.text((20, 22), message, fill=(0, 0, 0), font=font)
 
     # החזרת התמונה כ-response
     img_io = io.BytesIO()
